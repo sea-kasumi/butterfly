@@ -1,0 +1,2 @@
+module InfectionHelper
+end
