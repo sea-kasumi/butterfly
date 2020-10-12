@@ -1,2 +1,11 @@
-<h1>Infection#top</h1>
-<p>Find me in app/views/infection/top.html.erb</p>
+<head>
+ <h1>感染症情報</h1>
+ <p>感染症情報を掲示します</p>
+</head>
+<body>
+ <%= link_to "島根県インフルエンザ情報", "https://www.pref.shimane.lg.jp/bousai_info/yakuji/kansensyo/other/influ_tyuihou_keihou.html" , target: :_blank, rel: "noopener noreferrer"%>
+
+ <p><%= link_to "島根県コロナウイルス情報", "https://www.pref.shimane.lg.jp/bousai_info/bousai/kikikanri/shingata_taisaku/new_coronavirus_portal.html" , target: :_blank, rel: "noopener noreferrer"%>
+ 
+ <p><%= link_to "そのほかの感染症情報", "http://www.nagaoka-med.or.jp/kansensho/gakkoudensen.html", target: :_blank, rel: "noopener noreferrer"%>
+</body>
