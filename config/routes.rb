@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   get 'home/top'
 
   get 'infection/top'
