@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201005032651) do
+ActiveRecord::Schema.define(version: 20201009062123) do
 
   create_table "users", force: :cascade do |t|
     t.string "account"
     t.string "password"
     t.integer "grade"
-    t.integer "class"
     t.integer "number"
     t.string "name"
     t.boolean "graduate"
     t.boolean "teacher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "room"
   end
 
 end
