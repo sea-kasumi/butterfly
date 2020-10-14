@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  display: MyString
+  disporder: 1
+
+two:
+  display: MyString
+  disporder: 1

@@ -1,32 +1,38 @@
-<h1>Butterfly</h1>
+<head>
+ <h1>Butterfly</h1>
+</head>
 
-<%
-#user = loginUser
-user = new User  #テストコード ↑ のメソッドが出来たらいらない
-user.teacher = true
-%>
-<%if user.teacher%>
-<%= link_to '健康観察', '' %>
-<%else%>
-<%= link_to '健康観察', '' %>
-<%end%>
-<br>
-<%if user.teacher%>
-<%= link_to 'カウンセリング申し込み', '' %>
-<%else%>
-<%= link_to 'カウンセリング申し込み', '' %>
-<%end%>
-<br>
-<%if user.teacher%>
-<%= link_to '名簿編集', 'controller.action'%>
-<%else%>
-<%= link_to '感染症情報', 'http://localhost:3000/infection/top/' %>
-<%end%>
-<br>
-<%if user.teacher%>
-<%= link_to '質問コーナー', '' %>
-<%else%>
-<%= link_to '質問コーナー', '' %>
-<%end%>
-<br>
-<%= link_to 'ログアウト', '' %>
+<body>
+ <%
+   #user = loginUser
+   #user = User.new(teacher: true)
+    teacher = true
+   #テストコード ↑ のメソッドが出来たらいらない
+ %>
+
+ <%if teacher%>
+ <%= link_to '健康観察', '' %>
+ <%else%>
+ <%= link_to '健康観察', '' %>
+ <%end%>
+ <br>
+ <%if teacher%>
+ <%= link_to 'カウンセリング申し込み', '' %>
+ <%else%>
+ <%= link_to 'カウンセリング申し込み', '' %>
+ <%end%>
+ <br>
+ <%if teacher%>
+ <%= link_to '名簿編集', '' %>
+ <%else%>
+ <%= link_to '感染症情報', 'http://localhost:3000/infection/top/' %>
+ <%end%>
+ <br>
+ <%if teacher%>
+ <%= link_to '質問コーナー', '' %>
+ <%else%>
+ <%= link_to '質問コーナー', '' %>
+ <%end%>
+ <br>
+ <%= link_to 'ログアウト', '' %>
+</body>

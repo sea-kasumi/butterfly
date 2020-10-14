@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Healths</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Temperature</th>
+      <th>Condition</th>
+      <th>Symptom</th>
+      <th>Day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @healths.each do |health| %>
+      <tr>
+        <td><%= health.user_id %></td>
+        <td><%= health.temperature %></td>
+        <td><%= health.condition %></td>
+        <td><%= health.symptom_id %></td>
+        <td><%= health.day %></td>
+        <td><%= link_to 'Show', health %></td>
+        <td><%= link_to 'Edit', edit_health_path(health) %></td>
+        <td><%= link_to 'Destroy', health, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Health', new_health_path %>

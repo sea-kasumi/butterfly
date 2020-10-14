@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @health.user_id %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @health.temperature %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @health.condition %>
+</p>
+
+<p>
+  <strong>Symptom:</strong>
+  <%= @health.symptom_id %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @health.day %>
+</p>
+
+<%= link_to 'Edit', edit_health_path(@health) %> |
+<%= link_to 'Back', healths_path %>
