@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :healths
   get 'sessions/new'
+  post 'sessions/create'
 
   resources :questions
   get 'home/top'
