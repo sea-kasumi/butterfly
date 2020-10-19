@@ -22,8 +22,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :condition %>
-    <%= form.text_field :condition, id: :health_condition %>
+    <h4>体調</h4>
+    <%= form.label :良い %>
+    <%= form.radio_button :condition, id: :health_condition %>
+    <%= form.label :悪い %>
+    <%= form.radio_button :condition, id: :health_condition %>
   </div>
 
   <div class="field">
@@ -37,6 +40,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :送信 %>
   </div>
 <% end %>

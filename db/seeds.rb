@@ -19,3 +19,10 @@ CSV.foreach('db/sample.csv') do |row|
         :teacher => row[7]
     )
 end
+CSV.foreach('db/symptomsample.csv') do |row|
+    Symptom.create(
+        :symptomname => row[0],
+        :bad => row[1],
+        :good => row[2]
+    )
+end
