@@ -1,0 +1,37 @@
+<%= form_with(model: counsel, local: true) do |form| %>
+  <% if counsel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(counsel.errors.count, "error") %> prohibited this counsel from being saved:</h2>
+
+      <ul>
+      <% counsel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.date_select :day, id: :counsel_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.number_field :start_time, id: :counsel_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.number_field :end_time, id: :counsel_end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teacher %>
+    <%= form.text_field :teacher, id: :counsel_teacher %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

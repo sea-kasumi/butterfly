@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @counsel.day %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @counsel.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @counsel.end_time %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @counsel.teacher %>
+</p>
+
+<%= link_to 'Edit', edit_counsel_path(@counsel) %> |
+<%= link_to 'Back', counsels_path %>

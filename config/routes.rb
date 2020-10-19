@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :counsels
   resources :healths
   get 'sessions/new'
   post 'sessions/create'
