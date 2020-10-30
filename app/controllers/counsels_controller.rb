@@ -1,6 +1,10 @@
 class CounselsController < ApplicationController
   before_action :set_counsel, only: [:show, :edit, :update, :destroy]
 
+  def list_counsel_index
+    @counsels = Counsel.all
+  end
+
   # GET /counsels
   # GET /counsels.json
   def index
