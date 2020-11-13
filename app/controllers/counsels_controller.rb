@@ -2,13 +2,15 @@ class CounselsController < ApplicationController
   before_action :set_counsel, only: [:show, :edit, :update, :destroy]
 
   def list_counsel_index
-    @counsels = Counsel.all
+    @counselings = Counseling.all
+    @today = Date.today
   end
 
   # GET /counsels
   # GET /counsels.json
   def index
     @counsels = Counsel.all
+    @today = Date.today
   end
 
   # GET /counsels/1

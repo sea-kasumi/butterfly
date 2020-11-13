@@ -15,19 +15,21 @@
 
   <tbody>
     <% @counsels.each do |counsel| %>
-      <tr>
-        <td><%= counsel.day %></td>
-        <td><%= counsel.start_time.strftime("%H:%M") %>~<%= counsel.end_time.strftime("%H:%M") %></td>
-        <td><%= counsel.teacher %>先生</td>
-        <td><%= link_to '詳細', counsel %></td>
-        <td><%= link_to '編集', edit_counsel_path(counsel) %></td>
-        <td><%= link_to '削除', counsel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if counsel.day > @today %>
+        <tr>
+          <td><%= counsel.day %></td>
+          <td><%= counsel.start_time.strftime("%H:%M") %>~<%= counsel.end_time.strftime("%H:%M") %></td>
+          <td><%= counsel.teacher %>先生</td>
+          <td><%= link_to '詳細', counsel %></td>
+          <td><%= link_to '編集', edit_counsel_path(counsel) %></td>
+          <td><%= link_to '削除', counsel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to '申し込み者一覧', '/counsels/list_counsel_index/' %>
+<%= link_to '申し込み者一覧', '/counsels/list_counsel_index/' %> |
 <%= link_to '追加', new_counsel_path %>

@@ -1,15 +1,32 @@
 <h1>カウンセリング申し込み</h1>
 
-<p>
-    <strong>日にち:</strong>
-    <%= @counsel.day %>
-</p>
+<% if @counseling.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @counseling.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <p>
-  <strong>時間:</strong>
+  <strong>日にち:</strong>
+  <%= @counsel.day %>
 </p>
+<%= form_with(model: @counseling, local: true) do |form| %>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.hidden_field :counsel_id, :value => @counsel.id %>
+  <p>
+    <strong>時間:</strong>
+    <% @hours.each do |hour| %>
+      <%= form.radio_button :hour_id, hour.id %>
+      <%= hour.display %>
+    <% end %>
+  </p>
 
-<%= submit_tag "OK" %>
+  <%= submit_tag "申し込む" %>
+<% end %>
 
 <br>
 

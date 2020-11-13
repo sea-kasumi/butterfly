@@ -8,6 +8,7 @@
     <tr>
       <th>日にち</th>
       <th>時間</th>
+      <th>先生</th>
       <th>年</th>
       <th>組</th>
       <th>番</th>
@@ -16,15 +17,18 @@
   </thead>
 
   <tbody>
-    <% @counsels.each do |counsel| %>
-      <tr>
-        <td><%= counsel.day %></td>
-        <td><%= counsel.start_time.strftime("%H:%M") %>~<%= counsel.end_time.strftime("%H:%M") %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+    <% @counselings.each do |counseling| %>
+      <% if counseling.counsel.day > @today %>
+        <tr>
+          <td><%= counseling.counsel.day %></td>
+          <td><%= counseling.hour.display %></td>
+          <td><%= counseling.counsel.teacher %>先生</td>
+          <td><%= counseling.user.grade %></td>
+          <td><%= counseling.user.room %></td>
+          <td><%= counseling.user.number %></td>
+          <td><%= counseling.user.name %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
