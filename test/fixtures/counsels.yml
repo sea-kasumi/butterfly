@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2020-10-19
+  start_time: 1
+  end_time: 1
+  teacher: MyString
+
+two:
+  day: 2020-10-19
+  start_time: 1
+  end_time: 1
+  teacher: MyString

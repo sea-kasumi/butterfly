@@ -1,3 +1,3 @@
 class Symptom < ApplicationRecord
-    belongs_to :health
+    has_many :healths
 end

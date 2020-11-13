@@ -5,6 +5,18 @@ class HealthsController < ApplicationController
   # GET /healths.json
   def index
     @healths = Health.all
+    @date = Date.today
+    @absenceday = Date.today
+    @symptomcount = 0
+    @absencecount = 0
+    @absenceusers = []
+    users = User.all
+    users.each do |user|
+      if user.teacher == FALSE and Health.where(user_id: user.id).empty? then
+        @absenceusers << user
+      end
+    end
+    @healths = Health.all
   end
 
   # GET /healths/1
@@ -25,6 +37,7 @@ class HealthsController < ApplicationController
   # POST /healths.json
   def create
     @health = Health.new(health_params)
+    @health.user_id = current_user.id
 
     respond_to do |format|
       if @health.save

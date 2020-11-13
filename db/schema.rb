@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201014030803) do
+ActiveRecord::Schema.define(version: 20201030061855) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -20,12 +20,37 @@ ActiveRecord::Schema.define(version: 20201014030803) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "counselings", force: :cascade do |t|
+    t.integer "hour_id"
+    t.integer "user_id"
+    t.integer "counsel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "counsels", force: :cascade do |t|
+    t.date "day"
+    t.string "teacher"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "start_time"
+    t.time "end_time"
+  end
+
   create_table "healths", force: :cascade do |t|
     t.integer "user_id"
     t.integer "temperature"
     t.string "condition"
-    t.string "symptom_id"
     t.date "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "symptom_id"
+  end
+
+  create_table "hours", force: :cascade do |t|
+    t.string "display"
+    t.time "start_time"
+    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
