@@ -1,4 +1,4 @@
-// Place all the styles related to the questions controller here.
+// Place all the styles related to the answer controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html{
@@ -7,13 +7,13 @@ html{
 body{
     height:100%;
   }
-#q_table {
+#a_table {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 55%;
+    height: 75%;
     width: 32%;
  }
- #q_table thead th{
+#a_table thead th{
   position: sticky;
   position: -webkit-sticky;
   top: 0;

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>質問者一覧</h1>
+<div id="a_table">
+<table border="1">
+    <thead>
+        <tr>
+        <th>年</th>
+        <th>組</th>
+        <th>番</th>
+        <th>氏名</th>
+        <th>質問内容<th>
+        <th>回答数</th>
+        </tr>
+    </thead>
+
+
+
+<tbody>
+    <% @questions.each do |question| %>
+      <tr>
+      <td><%= question.user.grade %></td>
+      <td><%= question.user.class %></td>
+      <td><%= question.user.number %></td>
+      <td><%= question.user.name %></td>
+      <td><%= safe_join(question.question.split("\n"),tag(:br)) %></td>
+      <td><%= link_to '選択', new_answer_path(question_id: question.id) %></td>
+      <td><%= question.answer_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
