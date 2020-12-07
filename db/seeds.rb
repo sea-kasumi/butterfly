@@ -7,15 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "csv"
-CSV.foreach('db/sample.csv') do |row|
-    User.create(
-        :account => row[0],
-        :password => row[1],
-        :grade => row[2],
-        :room => row[3],
-        :number => row[4],
-        :name => row[5],
-        :graduate => row[6],
-        :teacher => row[7]
+CSV.foreach('db/hour.csv') do |row|
+    Hour.create(
+        :display => row[0],
+        :start_time => row[1],
+        :end_time => row[2],
     )
 end

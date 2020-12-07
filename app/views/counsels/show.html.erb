@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Day:</strong>
+  <strong>日にち:</strong>
   <%= @counsel.day %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @counsel.start_time %>
+  <strong>開始時間:</strong>
+  <%= @counsel.start_time.strftime("%H:%M") %>
 </p>
 
 <p>
-  <strong>End time:</strong>
-  <%= @counsel.end_time %>
+  <strong>終了時間:</strong>
+  <%= @counsel.end_time.strftime("%H:%M") %>
 </p>
 
 <p>
-  <strong>Teacher:</strong>
-  <%= @counsel.teacher %>
+  <strong>先生:</strong>
+  <%= @counsel.teacher %>先生
 </p>
 
-<%= link_to 'Edit', edit_counsel_path(@counsel) %> |
-<%= link_to 'Back', counsels_path %>
+<%= link_to '編集', edit_counsel_path(@counsel) %> |
+<%= link_to '戻る', counsels_path %>
