@@ -32,98 +32,63 @@
 
 <table>
   <tr>
-    <td><h3>欠席者一覧</h3></td>
+    <td><%= link_to '欠席者一覧' %></td>
+    <div style="display: none;" id="absencetable">
     <td>
-      <table border="1">
-        <tr>
-          <th>年</th>
-          <th>組</th>
-          <th>番</th>
-          <th>氏名</th>
-        </tr>
+    <table border="1">
+     <tr>
+       <th>年</th>
+       <th>組</th>
+       <th>番</th>
+       <th>氏名</th>
+     </tr>
+   
+     <% @absenceusers.each do |absenceuser| %>
+         <tr>
+           <td><%= absenceuser.grade %></td>
+           <td><%= absenceuser.room %></td>
+           <td><%= absenceuser.number %></td>
+           <td><%= absenceuser.name %></td>
+         </tr>
+     <% end %>
+   </table>
+   </td>
+   <td>
+     <%= column_chart @absence %>
+   </td>
+   </div>
+  </tr>
 
-        <% @absenceusers.each do |absenceuser| %>
+  <% @userclasss.each do |userclass| %>
+    <tr>
+      <td><h4><%= "#{userclass[0]}年#{userclass[1]}組" %></h4></td>
+      <td>
+        <table border="1">
           <tr>
-            <td><%= absenceuser.grade %></td>
-            <td><%= absenceuser.room %></td>
-            <td><%= absenceuser.number %></td>
-            <td><%= absenceuser.name %></td>
-            <% @absencecount = @absencecount + 1 %>
-            <% @absenceday = Date.today %>
+            <th>年</th>
+            <th>組</th>
+            <th>番</th>
+            <th>氏名</th>
           </tr>
-        <% end %>
-      </table>
-    </td>
-    <td>
-      <h4><%= @absenceday.mon %>月</h4>
-      <%= column_chart User.pluck(@absenceday.day, @absencecount) %>
-      <% @absencecount = 0 %>
-    </td>
-  </tr>
-
-  <tr>
-    <td><h4>1年1組</h4></td>
-    <td>
-      <table border="1">
-        <tr>
-          <th>年</th>
-          <th>組</th>
-          <th>番</th>
-          <th>氏名</th>
-        </tr>
-        <% @absenceusers.each do |absenceuser| %>
-          <% if absenceuser.grade == 1 and absenceuser.room == 1 %>
-            <tr>
-              <td><%= absenceuser.grade %></td>
-              <td><%= absenceuser.room %></td>
-              <td><%= absenceuser.number %></td>
-              <td><%= absenceuser.name %></td>
-              <% @absencecount = @absencecount + 1 %>
-            </tr>
+          <% if userclass[2].present? %>
+             <tr>
+                <td><%= userclass[2].grade %></td>
+                <td><%= userclass[2].room %></td>
+                <td><%= userclass[2].number %></td>
+                <td><%= userclass[2].name %></td>
+              </tr>
           <% end %>
-        <% end %>
-      </table>
-    </td>
+        </table>
+      </td>
 
-    <td>
-      <h4><%= @absenceday.mon %>月</h4>
-      <%= column_chart User.pluck(@absenceday.day, @absencecount) %>
-      <% @absencecount = 0 %>
-    </td>
-  </tr>
+      <td>
+        <%= column_chart userclass[3] %>
+      </td>
+    </tr>
+  <% end %>
 
   <tr>
-    <td><h4>3年4組</h4></td>
-    <td>
-      <table border="1">
-        <tr>
-          <th>年</th>
-          <th>組</th>
-          <th>番</th>
-          <th>氏名</th>
-        </tr>
-        <% @absenceusers.each do |absenceuser| %>
-          <% if absenceuser.grade == 3 and absenceuser.room == 4 %>
-            <tr>
-              <td><%= absenceuser.grade %></td>
-              <td><%= absenceuser.room %></td>
-              <td><%= absenceuser.number %></td>
-              <td><%= absenceuser.name %></td>
-              <% @absencecount = @absencecount + 1 %>
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-    </td>
-    <td>
-      <h4><%= @absenceday.mon %>月</h4>
-      <%= column_chart User.pluck(@absenceday.day, @absencecount) %>
-      <% @absencecount = 0 %>
-    </td>
-  </tr>
-
-  <tr>
-    <td><h3>症状別一覧</h3></td>
+    <td><h4>症状別一覧</h4></td>
     <td>
       <table border="1">
         <tr>
@@ -134,99 +99,51 @@
           <th>症状</th>
         </tr>
 
-        <% @healths.each do |health| %>
-          <% if health.symptom.disporder > 1 %>
+        <% @symptoms.each do |symptom| %>
+          <% if symptom.day == @today %>
             <tr>
-              <td><%= health.user.grade %></td>
-              <td><%= health.user.room %></td>
-              <td><%= health.user.number %></td>
-              <td><%= health.user.name %></td>
-              <td><%= health.symptom.display %></td>
-              <% @symptomcount = @symptomcount + 1 %>
-              <% @date = Date.today %>
+              <td><%= symptom.user.grade %></td>
+              <td><%= symptom.user.room %></td>
+              <td><%= symptom.user.number %></td>
+              <td><%= symptom.user.name %></td>
+              <td><%= symptom.symptom.display %></td>
             </tr>
           <% end %>
         <% end %>
       </table>
     </td>
     <td>
-      <h4><%= @date.mon %>月</h4>
-      <%= column_chart Health.pluck(@date.day, @symptomcount) %>
-      <% @symptomcount = 0 %>
+      <%= column_chart @symptomcount %>
     </td>
   </tr>
-
-  <tr>
-    <td><h3>1年1組</h3></td>
-    <td>
-      <table border="1">
-        <tr>
-          <th>年</th>
-          <th>組</th>
-          <th>番</th>
-          <th>氏名</th>
-          <th>症状</th>
-        </tr>
-
-        <% @healths.each do |health| %>
-          <% if health.symptom.disporder > 1 %>
-            <% if health.user.grade == 1 and health.user.room == 1 %>
+  
+  <% @userclasss.each do |userclass| %>
+    <tr>
+      <td><h4><%= "#{userclass[0]}年#{userclass[1]}組" %></h4></td>
+      <td>
+        <table border="1">
+          <tr>
+            <th>年</th>
+            <th>組</th>
+            <th>番</th>
+            <th>氏名</th>
+            <th>症状</th>
+          </tr>
+          <% if userclass[4].present? %>
+            <% if userclass[4].day == @today %>
               <tr>
-                <td><%= health.user.grade %></td>
-                <td><%= health.user.room %></td>
-                <td><%= health.user.number %></td>
-                <td><%= health.user.name %></td>
-                <td><%= health.symptom.display %></td>
-                <% @symptomcount = @symptomcount + 1 %>
-                <% @date = Date.today %>  
+                <td><%= userclass[4].user.grade %></td>
+                <td><%= userclass[4].user.room %></td>
+                <td><%= userclass[4].user.number %></td>
+                <td><%= userclass[4].user.name %></td>
+                <td><%= userclass[4].symptom.display %></td>
               </tr>
             <% end %>
           <% end %>
-        <% end %>
-      </table>
-    </td>
-    <td>
-      <h4><%= @date.mon %>月</h4>
-      <%= column_chart Health.pluck(@date.day, @symptomcount) %>
-      <% @symptomcount = 0 %>
-    </td>
-  </tr>
-
-  <tr>
-    <td><h3>3年4組</h3></td>
-    <td>
-      <table border="1">
-        <tr>
-          <th>年</th>
-          <th>組</th>
-          <th>番</th>
-          <th>氏名</th>
-          <th>症状</th>
-        </tr>
-
-        <% @healths.each do |health| %>
-          <% if health.symptom.disporder > 1 %>
-            <% if health.user.grade == 3 and health.user.room == 4 %>
-              <tr>
-                <td><%= health.user.grade %></td>
-                <td><%= health.user.room %></td>
-                <td><%= health.user.number %></td>
-                <td><%= health.user.name %></td>
-                <td><%= health.symptom.display %></td>
-                <% @symptomcount = @symptomcount + 1 %>
-                <% @date = Date.today %>  
-              </tr>
-            <% end %>
-          <% end %>
-        <% end %>
-      </table>
-    </td>
-    <td>
-      <h4><%= @date.mon %>月</h4>
-      <%= column_chart Health.pluck(@date.day, @symptomcount) %>
-      <% @symptomcount = 0 %>
-    </td>
-  </tr>
-</table>
-
-<%= link_to 'New Health', new_health_path %>
+        </table>
+      </td>
+      <td>
+        <%= column_chart userclass[5] %>
+      </td>
+    </tr>
+  <% end %>
