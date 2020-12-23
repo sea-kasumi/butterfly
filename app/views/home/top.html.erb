@@ -1,15 +1,11 @@
-<head>
- <h1>Butterfly</h1>
-</head>
+ <% teacher = current_user.teacher %>
 
-<body>
- <%
-   #user = loginUser
-   #user = User.new(teacher: true)
-    teacher = true
-   #テストコード ↑ のメソッドが出来たらいらない
- %>
+ <header>
+   <h1>Butterfly</h1>
+   <p><%= @today.mon %>月<%= @today.day %>日(<%= @yobi %>)</p>
+ </header>
 
+<<<<<<< HEAD
  <%if teacher%>
  <%= link_to '健康観察', '' %>
  <%else%>
@@ -36,3 +32,43 @@
  <br>
  <%= link_to 'ログアウト', '' %>
 </body>
+=======
+
+ <div class="health cp_bw">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%else%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="counsel">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
+   <%else%>
+      <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
+   <%end%>
+ </div>
+
+ <div class="infection">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("edit.png")), '' %>
+   <%else%>
+      <%= link_to image_tag(asset_path("infection.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="question">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%else%>
+      <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="shape">
+   <div class="log_out">
+      <%= link_to 'ログアウト', sessions_destroy_path %>
+   </div>
+ </div>
+>>>>>>> fec8d10129742190e16d29a575e0b17ea904b9d0

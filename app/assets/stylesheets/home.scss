@@ -1,3 +1,90 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home {
+  header h1 {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 55px;
+    font-family: 'Mv Boli';
+  }
+
+  header p {
+    text-align: right;
+    font-size: 20px;
+  }
+
+  .health {
+    position: relative;
+    width: 28%;
+    height: 28%;
+    left: 15%;
+    top: 15%;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .counsel {
+    position: relative;
+    width: 28%;
+    height: 28%;
+    left: 60%;
+    top: 15%;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .infection {
+    position: relative;
+    width: 28%;
+    height: 28%;
+    left: 15%;
+    margin-top: 23%;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .question {
+    position: relative;
+    width: 28%;
+    height: 28%;
+    left: 60%;
+    margin-top: 23%;;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .shape {
+    width: 200px;
+    height: 60px;
+    background: beige;
+    border-radius: 50%;
+    position: absolute;
+    left: 3%;
+    bottom: 4%;
+    .log_out {
+      text-decoration: none;
+      font-size: 25px;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding-top: 20px;
+      :link {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
