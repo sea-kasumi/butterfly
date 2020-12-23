@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   post 'sessions/create'
+  get 'sessions/destroy'
 
   resources :questions
   get 'home/top'

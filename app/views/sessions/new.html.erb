@@ -1,11 +1,22 @@
-<h1>Login</h1>
+<% if flash.now[:alert] %>
+  <p class="alert"><%= flash.now[:alert] %></p>
+<% end %>
 
 <%= form_for(:session, url:sessions_create_path) do |f| %>
-  <%= f.label :account,'アカウント' %>
-  <%= f.text_field :account %>
-  <%= f.label :password,'パスワード' %>
-  <%= f.text_field :password %>
-  <p>
-  <%= submit_tag "ログイン" %>
-  </p>
+
+  <div class="pw-form">
+    <div class="pw-form-container">
+      <p><%= f.text_field :account, :placeholder => "Account" %></p>
+      <p>
+        <%= f.password_field :password, :placeholder => "Password" %>
+        <span class="field-icon">
+          <i toggle="#password-field" class="fa fa-eye toggle-password" id="password-field"></i>
+        </span>
+      </p>
+      <p>
+        <input type="submit" value="login">
+      </p>
+    </div>
+  </div>
+
 <% end %>

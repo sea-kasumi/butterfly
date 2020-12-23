@@ -1,38 +1,45 @@
-<head>
- <h1>Butterfly</h1>
-</head>
+ <% teacher = current_user.teacher %>
 
-<body>
- <%
-   #user = loginUser
-   #user = User.new(teacher: true)
-    teacher = true
-   #テストコード ↑ のメソッドが出来たらいらない
- %>
+ <header>
+   <h1>Butterfly</h1>
+   <p><%= @today.mon %>月<%= @today.day %>日(<%= @yobi %>)</p>
+ </header>
 
- <%if teacher%>
- <%= link_to '健康観察', '' %>
- <%else%>
- <%= link_to '健康観察', '' %>
- <%end%>
- <br>
- <%if teacher%>
- <%= link_to 'カウンセリング申し込み', '' %>
- <%else%>
- <%= link_to 'カウンセリング申し込み', '' %>
- <%end%>
- <br>
- <%if teacher%>
- <%= link_to '名簿編集', '' %>
- <%else%>
- <%= link_to '感染症情報', 'http://localhost:3000/infection/top/' %>
- <%end%>
- <br>
- <%if teacher%>
- <%= link_to '質問コーナー', '' %>
- <%else%>
- <%= link_to '質問コーナー', '' %>
- <%end%>
- <br>
- <%= link_to 'ログアウト', '' %>
-</body>
+
+ <div class="health cp_bw">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%else%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="counsel">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
+   <%else%>
+      <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
+   <%end%>
+ </div>
+
+ <div class="infection">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("edit.png")), '' %>
+   <%else%>
+      <%= link_to image_tag(asset_path("infection.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="question">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%else%>
+      <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%end%>
+ </div>
+
+ <div class="shape">
+   <div class="log_out">
+      <%= link_to 'ログアウト', sessions_destroy_path %>
+   </div>
+ </div>
