@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :check_login,only:[:new,:create]
   def new
     @user = User.new
   end
@@ -11,13 +11,15 @@ class SessionsController < ApplicationController
       redirect_to home_top_path, notice: 'ログインしました'
     else
       #エラーメッセージ生成
-      flash.now.alert = "もう一度入力してください"
+      flash.now[:alert] = 'もう一度入力してください'
       render :new
     end
   end
 
   def destroy
     log_out
+    flash.now[:alert] = 'ログアウトしました'
+    render :new
   end
 
 end

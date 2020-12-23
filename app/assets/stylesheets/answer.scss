@@ -1,0 +1,38 @@
+// Place all the styles related to the answer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+    height:100%;
+  }
+body{
+    height:100%;
+  }
+
+#a_table {
+    margin-left:auto;
+    margin-right:auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 75%;
+    width: 50%;
+    
+ }
+
+#a_table thead th{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: white;
+}
+h1 {
+  text-align: center;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+.answer_margin{
+  margin-left: 30%;
+  margin-right: 30%;
+}
+

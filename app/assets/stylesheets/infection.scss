@@ -1,3 +1,29 @@
 // Place all the styles related to the infection controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.backcolor {
+    background-color: rgb(140, 240, 240);
+}
+
+
+.linkbox {
+    display: inline-block;      /* インラインブロック要素にする */
+    padding:  5%;             /* 余白指定 */
+    height: auto;              /* 高さ指定 */
+    margin: 5%;
+	position: relative;
+	width: auto;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background: #06ee06;
+
+}
+.linkbox:hover{
+    cursor: pointer;
+	 text-decoration: none;
+	background:#90fd02;
+
+}

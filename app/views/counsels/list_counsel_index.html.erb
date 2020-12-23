@@ -1,0 +1,38 @@
+<% require "date" %>
+<p id="not""ice"><%= notice %></p>
+
+<h1>カウンセリング申し込み者一覧</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>日にち</th>
+      <th>時間</th>
+      <th>先生</th>
+      <th>年</th>
+      <th>組</th>
+      <th>番</th>
+      <th>氏名</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @counselings.each do |counseling| %>
+      <% if counseling.counsel.day > @today %>
+        <tr>
+          <td><%= counseling.counsel.day %></td>
+          <td><%= counseling.hour.display %></td>
+          <td><%= counseling.counsel.teacher %>先生</td>
+          <td><%= counseling.user.grade %></td>
+          <td><%= counseling.user.room %></td>
+          <td><%= counseling.user.number %></td>
+          <td><%= counseling.user.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '戻る', counsels_path %>
