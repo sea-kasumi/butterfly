@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'counsels/list_counsel_index'
 
   resources :counsels
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   resources :questions
+  resources :answers
   get 'home/top'
 
   get 'infection/top'

@@ -6,7 +6,7 @@
 </header>
 
 
-<div class="health cp_bw">
+<div class="health">
   <%if teacher%>
     <%=link_to image_tag(asset_path("health.png")), '' %>
   <%else%>
@@ -16,30 +16,30 @@
 
 <div class="counsel">
   <%if teacher%>
-     <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
+    <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
   <%else%>
-     <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
+    <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
   <%end%>
 </div>
 
 <div class="infection">
   <%if teacher%>
-     <%= link_to image_tag(asset_path("edit.png")), '' %>
+    <%= link_to image_tag(asset_path("edit.png")), '' %>
   <%else%>
-     <%= link_to image_tag(asset_path("infection.png")), '' %>
+    <%= link_to image_tag(asset_path("infection.png")), '' %>
   <%end%>
 </div>
 
 <div class="question">
   <%if teacher%>
-     <%= link_to image_tag(asset_path("question.png")), '' %>
+    <%= link_to image_tag(asset_path("question.png")), '' %>
   <%else%>
-     <%= link_to image_tag(asset_path("question.png")), '' %>
+    <%= link_to image_tag(asset_path("question.png")), '' %>
   <%end%>
 </div>
 
 <div class="shape">
   <div class="log_out">
-     <%= link_to 'ログアウト', sessions_destroy_path %>
+    <%= link_to 'ログアウト', sessions_destroy_path %>
   </div>
 </div>

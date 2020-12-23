@@ -1,3 +1,55 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+    height:100%;
+  }
+body{
+    height:100%;
+  }
+  #q_table {
+    margin-left:auto;
+    margin-right:auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 55%;
+    width: 50%;
+ }
+ .show{
+   margin-left: 20%;
+   margin-right: 20%;
+ }
+
+ #q_table thead th{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: white;
+}
+.answer_center {
+  text-align: center;
+}
+.answer{
+  margin-top: 1%;
+  padding: 1%; 
+  margin-bottom: 1%;
+  border-bottom: solid black;
+  border-top: solid black;
+  border-left: solid black;
+  border-right: solid black;
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: left;
+  b {
+    border-bottom: solid ;
+  }
+
+}
+
+
+.field{
+  text-align: center;
+}
+.actions{
+  text-align: center;
+}
