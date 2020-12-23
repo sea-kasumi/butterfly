@@ -25,11 +25,11 @@
  <%if teacher%>
  <%= link_to '名簿編集', '' %>
  <%else%>
- <%= link_to '感染症情報', 'http://localhost:3000/infection/top/' %>
+ <%= link_to '感染症情報', 'infection_top_path' %>
  <%end%>
  <br>
  <%if teacher%>
- <%= link_to '質問コーナー', '' %>
+ <%= link_to '質問コーナー', questions_path %>
  <%else%>
  <%= link_to '質問コーナー', '' %>
  <%end%>
