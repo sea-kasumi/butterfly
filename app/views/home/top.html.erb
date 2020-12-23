@@ -1,45 +1,46 @@
-<% teacher = current_user.teacher %>
+ <% teacher = current_user.teacher %>
 
-<header>
-  <h1>Butterfly</h1>
-  <p><%= @today.mon %>月<%= @today.day %>日(<%= @yobi %>)</p>
-</header>
+ <header>
+   <h1>Butterfly</h1>
+   <p><%= @today.mon %>月<%= @today.day %>日(<%= @yobi %>)</p>
+ </header>
 
 
-<div class="health">
-  <%if teacher%>
-    <%=link_to image_tag(asset_path("health.png")), '' %>
-  <%else%>
-     <%=link_to image_tag(asset_path("health.png")), '' %>
-  <%end%>
-</div>
+ <div class="health">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%else%>
+      <%=link_to image_tag(asset_path("health.png")), '' %>
+   <%end%>
+ </div>
 
-<div class="counsel">
-  <%if teacher%>
-    <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
-  <%else%>
-    <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
-  <%end%>
-</div>
+ <div class="counsel">
+   <%if teacher%>
+      <%=link_to image_tag(asset_path("counsel.png")), counsels_path %>
+   <%else%>
+      <%=link_to image_tag(asset_path("counseling.png")), counselings_path %>
+   <%end%>
+ </div>
 
-<div class="infection">
-  <%if teacher%>
-    <%= link_to image_tag(asset_path("edit.png")), '' %>
-  <%else%>
-    <%= link_to image_tag(asset_path("infection.png")), '' %>
-  <%end%>
-</div>
+ <div class="infection">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("edit.png")), '' %>
+   <%else%>
+   <%= link_to image_tag(asset_path("infection.png")), '' %>
+   <%end%>
+ </div>
 
-<div class="question">
-  <%if teacher%>
-    <%= link_to image_tag(asset_path("question.png")), '' %>
-  <%else%>
-    <%= link_to image_tag(asset_path("question.png")), '' %>
-  <%end%>
-</div>
+ <div class="question">
+   <%if teacher%>
+      <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%else%>
+   <%= link_to image_tag(asset_path("question.png")), '' %>
+   <%end%>
+ </div>
 
-<div class="shape">
-  <div class="log_out">
-    <%= link_to 'ログアウト', sessions_destroy_path %>
-  </div>
-</div>
+ <div class="shape">
+   <div class="log_out">
+      <%= link_to 'ログアウト', sessions_destroy_path %>
+   </div>
+ </div>
+
