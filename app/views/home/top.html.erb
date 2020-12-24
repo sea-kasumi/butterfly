@@ -26,15 +26,15 @@
   <%if teacher%>
     <%= link_to image_tag(asset_path("edit.png")), '' %>
   <%else%>
-    <%= link_to image_tag(asset_path("infection.png")), '' %>
+    <%= link_to image_tag(asset_path("infection.png")), infection_top_path %>
   <%end%>
 </div>
 
 <div class="question">
   <%if teacher%>
-    <%= link_to image_tag(asset_path("question.png")), '' %>
+    <%= link_to image_tag(asset_path("question.png")), answers_path %>
   <%else%>
-  <%= link_to image_tag(asset_path("question.png")), '' %>
+  <%= link_to image_tag(asset_path("question.png")), questions_path %>
   <%end%>
 </div>
 
