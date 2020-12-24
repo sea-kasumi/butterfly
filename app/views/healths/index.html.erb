@@ -2,11 +2,9 @@
 
 <h1>欠席者・症状別一覧</h1>
 
-
 <table>
   <tr>
     <td><h4>欠席者一覧</h4></td>
-    <div style="display: none;" id="absencetable">
     <td>
     <table border="1">
      <tr>
@@ -29,7 +27,6 @@
    <td>
      <%= column_chart @absence %>
    </td>
-   </div>
   </tr>
 
   <% @userclasss.each do |userclass| %>
