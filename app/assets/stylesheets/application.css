@@ -14,7 +14,9 @@
  *= require_self
  */
 
- body {
-     background-color: azure;
- }
+body {
+    background-color: azure;
+    width: auto;
+    height: auto;
+}
 

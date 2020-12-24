@@ -3,22 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home {
+
+
   header h1 {
     text-align: center;
-    padding-top: 10px;
+    margin-top: 10px;
     font-size: 55px;
     font-family: 'Mv Boli';
   }
 
   header p {
     text-align: right;
-    font-size: 20px;
+    font-size: 23px;
   }
 
   .health {
     position: relative;
     width: 28%;
-    height: 28%;
+    height: auto;
     left: 15%;
     top: 15%;
     img {
@@ -31,7 +33,7 @@
   .counsel {
     position: relative;
     width: 28%;
-    height: 28%;
+    height: auto;
     left: 60%;
     top: 15%;
     img {
@@ -44,7 +46,7 @@
   .infection {
     position: relative;
     width: 28%;
-    height: 28%;
+    height: auto;
     left: 15%;
     margin-top: 23%;
     img {
@@ -57,7 +59,7 @@
   .question {
     position: relative;
     width: 28%;
-    height: 28%;
+    height: auto;
     left: 60%;
     margin-top: 23%;;
     img {
@@ -73,8 +75,8 @@
     background: beige;
     border-radius: 50%;
     position: absolute;
-    left: 3%;
-    bottom: 4%;
+    left: 2%;
+    bottom: 3%;
     .log_out {
       text-decoration: none;
       font-size: 25px;
