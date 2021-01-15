@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.backcolor {
-    background-color: rgb(140, 240, 240);
-}
+
 
 
 .linkbox {
@@ -18,12 +16,18 @@
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
-	background: #06ee06;
+	background: rgba(253, 209, 63, 0.774);
+	border-radius: 100vh;
 
 }
 .linkbox:hover{
     cursor: pointer;
 	 text-decoration: none;
 	background:#90fd02;
+	
 
 }
+a {
+	color:#F00;
+	text-decoration:underline;
+	}

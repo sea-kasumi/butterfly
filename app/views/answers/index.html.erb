@@ -24,11 +24,11 @@
       <td><%= question.user.number %></td>
       <td><%= question.user.name %></td>
       <td><%= safe_join(question.question.split("\n"),tag(:br)) %></td>
-      <td width="8%"><%= link_to '選択', new_answer_path(question_id: question.id) %></td>
-      <td><%= question.answer_count %></td>
+      <td width="8%" align="center"><%= link_to '選択', new_answer_path(question_id: question.id) %></td>
+      <td align="center"><%= question.answer_count %></td>
       </tr>
     <% end %>
     </tbody>
  </table>
 </div>
-<%= link_to 'topに戻る', home_top_path %>
+<%= link_to 'topページに戻る', home_top_path %>

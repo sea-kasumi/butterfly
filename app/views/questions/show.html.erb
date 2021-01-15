@@ -16,7 +16,7 @@
 
 <tr>
 <td><%= @questions.user.grade %></td>
-<td><%= @questions.user.class %></td>
+<td><%= @questions.user.room %></td>
 <td><%= @questions.user.number %></td>
 <td><%= @questions.user.name %></td>
 <td><%= safe_join(@questions.question.split("\n"),tag(:br)) %></td>
@@ -37,6 +37,6 @@
    </div>
  <% end %>
 </div>
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to '編集', edit_question_path(@question) %> |
+<%= link_to '戻る', questions_path %>
 </div>
