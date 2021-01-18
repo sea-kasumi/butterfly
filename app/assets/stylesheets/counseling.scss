@@ -5,7 +5,19 @@
 .counselings {
 
   h1 {
-      text-align: left;
+    text-align: center;
+  }
+
+  table{
+    border-collapse:collapse;
+    margin:0 auto;
+  }
+  th{
+    color: white;
+    background: #6699CC;
+  }
+  table tr:nth-child(odd){
+    background:white;
   }
 
 }
