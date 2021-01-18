@@ -1,38 +1,59 @@
 // Place all the styles related to the answer controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html{
+
+.answers {
+  html{
     height:100%;
   }
-body{
+  body{
     height:100%;
+  }
+  h1 {
+    text-align: center;
   }
 
-#a_table {
+  #a_table {
     margin-left:auto;
     margin-right:auto;
     overflow-x: hidden;
     overflow-y: scroll;
     height: 75vh;
     width: 50%;
-    
- }
+  }
 
-#a_table thead th{
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  background-color: azure;
-}
-h1 {
-  text-align: center;
-}
-table{
-  margin-left: auto;
-  margin-right: auto;
-}
-.answer_margin{
-  margin-left: 30%;
-  margin-right: 30%;
+  #a_table thead th{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+  }
+  table{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:collapse;
+    margin:0 auto;
+  }
+  th{
+    color: white;
+    background: #6699CC;
+  }
+  td{
+    border: 1px solid #999;
+  }
+  table tr:nth-child(odd){
+    background:white;
+  }
+
+  .answer_margin{
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+  .field {
+    text-align: center;
+  }
+  .actions {
+    text-align: center;
+  }
+
 }
 

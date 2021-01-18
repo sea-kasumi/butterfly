@@ -1,62 +1,52 @@
 <h1>回答</h1>
 
-  <table border="1" class="answer_margin">
-    
-    <thead>
-        <tr>
-        <th>年</th>
-        <th>組</th>
-        <th>番</th>
-        <th width="15%">氏名</th>
-        <th width="73%">質問内容</th>
-        </tr>
-    </thead>
+<table class="answer_margin">
+  <thead>
+    <tr>
+      <th>年</th>
+      <th>組</th>
+      <th>番</th>
+      <th width="15%">氏名</th>
+      <th width="73%">質問内容</th>
+    </tr>
+  </thead>
 
-    <tbody>
-    
-      <tr>
+  <tbody>
+    <tr>
       <td><%= @questions.user.grade %></td>
       <td><%= @questions.user.room %></td>
       <td><%= @questions.user.number %></td>
       <td><%= @questions.user.name %></td>
       <td><%= safe_join(@questions.question.split("\n"),tag(:br)) %></td>
-
-      </tr>
-    
-    </tbody>
-  
-    
-    
-  </table>
-
-
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 <%= form_with model:@answer, local: true do |form| %>
   <% if @answer.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= pluralize(@answer.errors.count, "") %> 個のエラーで送信できません</h2>
-
-     <ul>
-       <% @answer.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-     </ul>
-   </div>
-  <% end %>
- <% end %>
-
-<%= form.hidden_field :question_id, :value => @questions.id %>
-<%= form.hidden_field :user_id, :value => @questions.user_id %>
-  
-   <div class="field">
-     <% form.label :answer %>
-     <%= form.text_area :answer, id: :answer_answer, :size=>"50x8" %>
-   </div>
-
-    <div class="actions">
-     <%= submit_tag "送信" %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "") %> 個のエラーで送信できません</h2>
+      <ul>
+        <% @answer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
+
+  <%= form.hidden_field :question_id, :value => @questions.id %>
+  <%= form.hidden_field :user_id, :value => @questions.user_id %>
+
+  <div class="field">
+    <% form.label :answer %>
+    <%= form.text_area :answer, id: :answer_answer, :size=>"50x8" %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "送信" %>
+  </div>
 <% end %>
 
 <%= link_to '戻る', answers_path %>
