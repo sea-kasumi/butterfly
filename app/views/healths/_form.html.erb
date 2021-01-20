@@ -12,31 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :health_user_id %>
+    <%= form.label :体温 %>
+    <p><%= form.number_field :temperature, step: "0.1", id: :health_temperature %>℃</p>
   </div>
 
   <div class="field">
-    <%= form.label :temperature %>
-    <%= form.number_field :temperature, id: :health_temperature %>
+    <%= form.label :体調 %>
+    <label><%= form.radio_button :condition, "良い" %>良い</label>
+    <label><%= form.radio_button :condition, "悪い" %>悪い</label>
   </div>
 
   <div class="field">
-    <%= form.label :condition %>
-    <%= form.text_field :condition, id: :health_condition %>
+    <%= form.label :症状 %>
+    <%= form.collection_select :symptom_id, Symptom.all, :id, :display %>
   </div>
 
   <div class="field">
-    <%= form.label :symptom_id %>
-    <%= form.text_field :symptom_id, id: :health_symptom_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :day %>
-    <%= form.date_select :day, id: :health_day %>
+    <%= form.hidden_field :day, :value => @date %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :送信 %>
   </div>
 <% end %>

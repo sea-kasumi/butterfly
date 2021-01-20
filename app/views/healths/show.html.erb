@@ -1,29 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @health.user_id %>
+  <strong>体温:</strong>
+  <%= @health.temperature %>℃
 </p>
 
 <p>
-  <strong>Temperature:</strong>
-  <%= @health.temperature %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
+  <strong>体調:</strong>
   <%= @health.condition %>
 </p>
 
 <p>
-  <strong>Symptom:</strong>
-  <%= @health.symptom_id %>
+  <strong>症状:</strong>
+  <%= @health.symptom.display %>
 </p>
 
-<p>
-  <strong>Day:</strong>
-  <%= @health.day %>
-</p>
-
-<%= link_to 'Edit', edit_health_path(@health) %> |
-<%= link_to 'Back', healths_path %>
+<%= link_to '戻る', 'http://localhost:3000/home/top' %>

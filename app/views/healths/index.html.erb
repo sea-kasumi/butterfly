@@ -1,35 +1,193 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Healths</h1>
+<h1>欠席者・症状別一覧</h1>
 
 <table>
-  <thead>
+  <tr>
+    <td><h3 id="absenceall">欠席者一覧</h3></td>
+    <div>
+      <td>
+        <div id="absencedata">
+          <table border="1">
+             <tr>
+               <th>年</th>
+               <th>組</th>
+               <th>番</th>
+               <th>氏名</th>
+             </tr>
+            <% @absenceusers.each do |absenceuser| %>
+              <tr>
+                <td><%= absenceuser.grade %></td>
+                <td><%= absenceuser.room %></td>
+                <td><%= absenceuser.number %></td>
+               <td><%= absenceuser.name %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+     </td>
+     <td>
+       <div id="absencechart">
+         <%= column_chart @absence %>
+       </div>
+     </td>
+    </div>
+    <script>
+      $('#absencedata').hide();
+      $('#absencechart').hide();
+      $(function () {
+        $('#absenceall').click(function () {
+            $('#absencedata').toggle();
+            $('#absencechart').toggle();
+        });
+      });
+    </script>
+  </tr>
+ 
+
+  <% @userclasss.each do |userclass| %>
     <tr>
-      <th>User</th>
-      <th>Temperature</th>
-      <th>Condition</th>
-      <th>Symptom</th>
-      <th>Day</th>
-      <th colspan="3"></th>
+      <td><h4 id=<%= "absence#{userclass[0]}#{userclass[1]}"%>><%= "#{userclass[0]}年#{userclass[1]}組" %></h4></td>
+      <div>
+        <td>
+          <div id=<%= "absencedata#{userclass[0]}#{userclass[1]}"%>>
+            <table border="1">
+              <tr>
+                <th>年</th>
+                <th>組</th>
+                <th>番</th>
+                <th>氏名</th>
+              </tr>
+              <% if userclass[2].present? %>
+                <% if userclass[4].day == @today %>
+                  <tr>
+                    <td><%= userclass[2].grade %></td>
+                    <td><%= userclass[2].room %></td>
+                    <td><%= userclass[2].number %></td>
+                    <td><%= userclass[2].name %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        </td>
+        <td>
+          <div id=<%= "absencechart#{userclass[0]}#{userclass[1]}"%>>
+            <%= column_chart userclass[3] %>
+          </div>
+        </td>
+      </div>
+      <script>
+      $('#<%= "absencedata#{userclass[0]}#{userclass[1]}"%>').hide();
+      $('#<%= "absencechart#{userclass[0]}#{userclass[1]}"%>').hide();
+      $(function () {
+        $('#<%= "absence#{userclass[0]}#{userclass[1]}"%>').click(function () {
+            $('#<%= "absencedata#{userclass[0]}#{userclass[1]}"%>').toggle();
+            $('#<%= "absencechart#{userclass[0]}#{userclass[1]}"%>').toggle();
+        });
+      });
+    </script>
     </tr>
-  </thead>
+  <% end %>
 
-  <tbody>
-    <% @healths.each do |health| %>
-      <tr>
-        <td><%= health.user_id %></td>
-        <td><%= health.temperature %></td>
-        <td><%= health.condition %></td>
-        <td><%= health.symptom_id %></td>
-        <td><%= health.day %></td>
-        <td><%= link_to 'Show', health %></td>
-        <td><%= link_to 'Edit', edit_health_path(health) %></td>
-        <td><%= link_to 'Destroy', health, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <tr>
+    <td><h3 id="symptomall">症状別一覧</h3></td>
+    <div>
+      <td>
+        <div id="symptomdata">
+          <table border="1">
+            <tr>
+              <th>年</th>
+              <th>組</th>
+              <th>番</th>
+              <th>氏名</th>
+              <th>体温</th>
+              <th>体調</th>
+              <th>症状</th>
+            </tr>
 
-<%= link_to 'New Health', new_health_path %>
+            <% @symptoms.each do |symptom| %>
+              <% if symptom.day == @today %>
+                <tr>
+                  <td><%= symptom.user.grade %></td>
+                  <td><%= symptom.user.room %></td>
+                  <td><%= symptom.user.number %></td>
+                  <td><%= symptom.user.name %></td>
+                  <td><%= symptom.temperature %></td>
+                  <td><%= symptom.condition %></td>
+                  <td><%= symptom.symptom.display %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      </td>
+      <td>
+        <div id="symptomchart">
+          <%= column_chart @symptomcount %>
+        </div>
+      </td>
+    </div>
+    <script>
+    $('#symptomdata').hide();
+    $('#symptomchart').hide();
+    $(function () {
+      $('#symptomall').click(function () {
+          $('#symptomdata').toggle();
+          $('#symptomchart').toggle();
+      });
+    });
+  </script>
+  </tr>
+  
+  <% @userclasss.each do |userclass| %>
+    <tr>
+      <td><h4 id=<%= "symptom#{userclass[0]}#{userclass[1]}"%>><%= "#{userclass[0]}年#{userclass[1]}組" %></h4></td>
+      <div>
+        <td>
+          <div id=<%= "symptomdata#{userclass[0]}#{userclass[1]}"%>>
+            <table border="1">
+              <tr>
+                <th>年</th>
+                <th>組</th>
+                <th>番</th>
+                <th>氏名</th>
+                <th>体温</th>
+                <th>体調</th>  
+                <th>症状</th>
+              </tr>
+              <% if userclass[4].present? %>
+                <% if userclass[4].day == @today %>
+                  <tr>
+                    <td><%= userclass[4].user.grade %></td>
+                    <td><%= userclass[4].user.room %></td>
+                    <td><%= userclass[4].user.number %></td>
+                    <td><%= userclass[4].user.name %></td>
+                    <td><%= userclass[4].temperature %></td>
+                    <td><%= userclass[4].condition %></td>
+                    <td><%= userclass[4].symptom.display %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        </td>
+        <td>
+          <div id=<%= "symptomchart#{userclass[0]}#{userclass[1]}"%>>
+            <%= column_chart userclass[5] %>
+          </div>
+        </td>
+      </div>
+      <script>
+      $('#<%= "symptomdata#{userclass[0]}#{userclass[1]}"%>').hide();
+      $('#<%= "symptomchart#{userclass[0]}#{userclass[1]}"%>').hide();
+      $(function () {
+        $('#<%= "symptom#{userclass[0]}#{userclass[1]}"%>').click(function () {
+            $('#<%= "symptomdata#{userclass[0]}#{userclass[1]}"%>').toggle();
+            $('#<%= "symptomchart#{userclass[0]}#{userclass[1]}"%>').toggle();
+        });
+      });
+    </script>
+    </tr>
+  <% end %>
