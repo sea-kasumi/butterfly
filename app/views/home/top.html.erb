@@ -8,9 +8,9 @@
 
 <div class="health">
   <%if teacher%>
-    <%=link_to image_tag(asset_path("health.png")), '' %>
+    <%=link_to image_tag(asset_path("health.png")), healths_path %>
   <%else%>
-    <%=link_to image_tag(asset_path("health.png")), '' %>
+    <%=link_to image_tag(asset_path("health.png")), healths_new_path %>
  <%end%>
 </div>
 
