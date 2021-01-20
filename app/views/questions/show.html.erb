@@ -6,15 +6,15 @@
       <th width="3%">年</th>
       <th width="3%">組</th>
       <th width="3%">番</th>
-      <th width="15%">氏名</th>
-      <th width="25%">質問内容</th>
+      <th width="10%">氏名</th>
+      <th width="15%">質問内容</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
       <td><%= @questions.user.grade %></td>
-      <td><%= @questions.user.class %></td>
+      <td><%= @questions.user.room %></td>
       <td><%= @questions.user.number %></td>
       <td><%= @questions.user.name %></td>
       <td><%= safe_join(@questions.question.split("\n"),tag(:br)) %></td>
