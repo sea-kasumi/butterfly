@@ -4,6 +4,56 @@ class HealthsController < ApplicationController
   # GET /healths
   # GET /healths.json
   def index
+    @userclasss = [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4]]
+    @healths = Health.all
+    @today = Date.today
+    
+    @userclasss.each do |userclass|
+      @absenceusers = []
+      @absenceclass = []
+      userclass << []
+      userclass << []
+      @absence = []
+      users = User.all
+      (Date.parse("2020-12-01")..Date.parse("2021-3-31")).each do |date|
+        @absencecount = 0
+        @absenceclasscount = 0
+        if date.wday != 0 or date.wday != 6
+          if Health.where(day: date).present?
+            @absenceusers = []
+            @absenceclass = []
+            users.each do |user|
+              if user.teacher == FALSE and Health.where(user_id: user.id).empty? then
+                @absenceusers << user
+                @absencecount = @absencecount + 1
+                @absenceusers.each do |absenceuser|
+                  if absenceuser.grade == userclass[0] and absenceuser.room == userclass[1]
+                    userclass[2] = user
+                    @absenceclasscount = @absenceclasscount + 1
+                    userclass[3] << [date, @absenceclasscount]
+                  end
+                end
+              end
+            end
+            @absence << [date, @absencecount]
+          end
+        end
+      end
+  
+      @symptoms = []
+      userclass << []
+      userclass << []
+      @healths.each do |health|
+        if health.symptom.disporder > 1
+          @symptoms << health
+          @symptomcount = Health.where.not(symptom_id: 58).group(:day).count
+          if health.user.grade == userclass[0] and health.user.room == userclass[1]
+            userclass[4] = health
+            userclass[5] = Health.where.not(symptom_id: 58).group(:day).count
+          end
+        end
+      end
+    end
     @healths = Health.all
   end
 
@@ -15,6 +65,7 @@ class HealthsController < ApplicationController
   # GET /healths/new
   def new
     @health = Health.new
+    @date = Date.today
   end
 
   # GET /healths/1/edit
@@ -25,10 +76,11 @@ class HealthsController < ApplicationController
   # POST /healths.json
   def create
     @health = Health.new(health_params)
+    @health.user_id = current_user.id
 
     respond_to do |format|
       if @health.save
-        format.html { redirect_to @health, notice: 'Health was successfully created.' }
+        format.html { redirect_to @health}
         format.json { render :show, status: :created, location: @health }
       else
         format.html { render :new }
@@ -42,7 +94,7 @@ class HealthsController < ApplicationController
   def update
     respond_to do |format|
       if @health.update(health_params)
-        format.html { redirect_to @health, notice: 'Health was successfully updated.' }
+        format.html { redirect_to @health }
         format.json { render :show, status: :ok, location: @health }
       else
         format.html { render :edit }

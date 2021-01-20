@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'home/top'
 
   get 'infection/top'
+  get 'absences/index'
 
 
   resources :users

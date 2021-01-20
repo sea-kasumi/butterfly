@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "csv"
+
+CSV.foreach('db/symptomsample.csv') do |row|
+    Symptom.create!(display: "なし", disporder: 1)
+    Symptom.create!(display: "頭痛", disporder: 2)
+    Symptom.create!(display: "発熱", disporder: 3)
+    Symptom.create!(display: "腹痛", disporder: 4)
 CSV.foreach('db/hour.csv') do |row|
     Hour.create(
         :display => row[0],
