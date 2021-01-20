@@ -2,33 +2,32 @@
 
 <h1>質問者一覧</h1>
 <div id="a_table">
- <table border="1">
+  <table>
     <thead>
-        <tr>
+      <tr>
         <th>年</th>
         <th>組</th>
         <th>番</th>
         <th width= "15%">氏名</th>
         <th width= "60%">質問内容<th>
         <th width= "8%">回答数</th>
-        </tr>
+      </tr>
     </thead>
 
-
-
-   <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-      <td><%= question.user.grade %></td>
-      <td><%= question.user.class %></td>
-      <td><%= question.user.number %></td>
-      <td><%= question.user.name %></td>
-      <td><%= safe_join(question.question.split("\n"),tag(:br)) %></td>
-      <td width="8%"><%= link_to '選択', new_answer_path(question_id: question.id) %></td>
-      <td><%= question.answer_count %></td>
-      </tr>
-    <% end %>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.user.grade %></td>
+          <td><%= question.user.class %></td>
+          <td><%= question.user.number %></td>
+          <td><%= question.user.name %></td>
+          <td><%= safe_join(question.question.split("\n"),tag(:br)) %></td>
+          <td width="8%"><%= link_to '選択', new_answer_path(question_id: question.id) %></td>
+          <td><%= question.answer_count %></td>
+        </tr>
+      <% end %>
     </tbody>
- </table>
+  </table>
 </div>
-<%= link_to 'topに戻る', home_top_path %>
+
+<%= link_to 'topページに戻る', home_top_path %>
