@@ -15,7 +15,7 @@ class HealthsController < ApplicationController
       userclass << []
       @absence = []
       users = User.all
-      (Date.parse("2020-11-01")..Date.parse("2020-12-31")).each do |date|
+      (Date.parse("2020-12-01")..Date.parse("2021-3-31")).each do |date|
         @absencecount = 0
         @absenceclasscount = 0
         if date.wday != 0 or date.wday != 6
@@ -39,9 +39,7 @@ class HealthsController < ApplicationController
           end
         end
       end
-    end
   
-    @userclasss.each do |userclass|
       @symptoms = []
       userclass << []
       userclass << []
@@ -82,7 +80,7 @@ class HealthsController < ApplicationController
 
     respond_to do |format|
       if @health.save
-        format.html { redirect_to @health, notice: 'Health was successfully created.' }
+        format.html { redirect_to @health}
         format.json { render :show, status: :created, location: @health }
       else
         format.html { render :new }
@@ -96,7 +94,7 @@ class HealthsController < ApplicationController
   def update
     respond_to do |format|
       if @health.update(health_params)
-        format.html { redirect_to @health, notice: 'Health was successfully updated.' }
+        format.html { redirect_to @health }
         format.json { render :show, status: :ok, location: @health }
       else
         format.html { render :edit }

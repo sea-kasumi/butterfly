@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201030061855) do
+ActiveRecord::Schema.define(version: 20210120022013) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20201030061855) do
 
   create_table "healths", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "temperature"
+    t.float "temperature"
     t.string "condition"
     t.date "day"
     t.datetime "created_at", null: false

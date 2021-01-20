@@ -1,8 +1,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-<<<<<<< HEAD
-
 //= require chartkick
 //= require Chart.bundle
 //= require jquery
