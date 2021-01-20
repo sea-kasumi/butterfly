@@ -13,10 +13,4 @@ CSV.foreach('db/symptomsample.csv') do |row|
     Symptom.create!(display: "頭痛", disporder: 2)
     Symptom.create!(display: "発熱", disporder: 3)
     Symptom.create!(display: "腹痛", disporder: 4)
-CSV.foreach('db/hour.csv') do |row|
-    Hour.create(
-        :display => row[0],
-        :start_time => row[1],
-        :end_time => row[2],
-    )
 end
