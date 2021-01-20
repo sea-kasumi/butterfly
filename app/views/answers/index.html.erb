@@ -9,7 +9,7 @@
         <th>組</th>
         <th>番</th>
         <th width= "15%">氏名</th>
-        <th width= "60%">質問内容<th>
+        <th width= "55%">質問内容<th>
         <th width= "8%">回答数</th>
       </tr>
     </thead>
@@ -18,7 +18,7 @@
       <% @questions.each do |question| %>
         <tr>
           <td><%= question.user.grade %></td>
-          <td><%= question.user.class %></td>
+          <td><%= question.user.room %></td>
           <td><%= question.user.number %></td>
           <td><%= question.user.name %></td>
           <td><%= safe_join(question.question.split("\n"),tag(:br)) %></td>
@@ -30,4 +30,4 @@
   </table>
 </div>
 
-<%= link_to 'topページに戻る', home_top_path %>
+<%= link_to 'TOPページに戻る', home_top_path %>
