@@ -5,8 +5,9 @@ class HealthsController < ApplicationController
   # GET /healths.json
   def index
     @userclasss = [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4]]
-    @healths = Health.all
+    @healths = Health.where.not(symptom_id: 58)
     @today = Date.today
+    @healthdays = Health.select(:day).distinct.order(:day)
     
     @userclasss.each do |userclass|
       @absenceusers = []
@@ -15,28 +16,26 @@ class HealthsController < ApplicationController
       userclass << []
       @absence = []
       users = User.all
-      (Date.parse("2020-12-01")..Date.parse("2021-3-31")).each do |date|
+      @healthdays.each do |healthday|
         @absencecount = 0
         @absenceclasscount = 0
-        if date.wday != 0 or date.wday != 6
-          if Health.where(day: date).present?
-            @absenceusers = []
-            @absenceclass = []
-            users.each do |user|
-              if user.teacher == FALSE and Health.where(user_id: user.id).empty? then
-                @absenceusers << user
-                @absencecount = @absencecount + 1
-                @absenceusers.each do |absenceuser|
-                  if absenceuser.grade == userclass[0] and absenceuser.room == userclass[1]
-                    userclass[2] = user
-                    @absenceclasscount = @absenceclasscount + 1
-                    userclass[3] << [date, @absenceclasscount]
-                  end
-                end
-              end
+        if healthday.day.wday != 0 or healthday.day.wday != 6
+          @absenceusers = []
+          @absenceclass = []
+          users.each do |user|
+            if user.teacher == FALSE and Health.where(day: healthday.day).where(user_id: user.id).empty? then
+              @absenceusers << user
+              @absencecount = @absencecount + 1
             end
-            @absence << [date, @absencecount]
           end
+          @absenceusers.each do |absenceuser|
+            if absenceuser.grade == userclass[0] and absenceuser.room == userclass[1]
+              userclass[2] = absenceuser
+              @absenceclasscount = @absenceclasscount + 1
+              userclass[3] << [healthday.day, @absenceclasscount]
+            end
+          end
+          @absence << [healthday.day, @absencecount]
         end
       end
   
@@ -44,17 +43,14 @@ class HealthsController < ApplicationController
       userclass << []
       userclass << []
       @healths.each do |health|
-        if health.symptom.disporder > 1
-          @symptoms << health
-          @symptomcount = Health.where.not(symptom_id: 58).group(:day).count
-          if health.user.grade == userclass[0] and health.user.room == userclass[1]
-            userclass[4] = health
-            userclass[5] = Health.where.not(symptom_id: 58).group(:day).count
-          end
+        @symptoms << health
+        @symptomcount = Health.where.not(symptom_id: 58).group(:day).count
+        if health.user.grade == userclass[0] and health.user.room == userclass[1]
+          userclass[4] = health
+          userclass[5] = Health.where.not(symptom_id: 58).group(:day).count
         end
       end
     end
-    @healths = Health.all
   end
 
   # GET /healths/1
