@@ -16,12 +16,16 @@
                <th>氏名</th>
              </tr>
             <% @absenceusers.each do |absenceuser| %>
-              <tr>
-                <td><%= absenceuser.grade %></td>
-                <td><%= absenceuser.room %></td>
-                <td><%= absenceuser.number %></td>
-               <td><%= absenceuser.name %></td>
-              </tr>
+              <% @absence.each do |absence| %>
+                <% if absence[0] == @today %>
+                  <tr>
+                    <td><%= absenceuser.grade %></td>
+                    <td><%= absenceuser.room %></td>
+                    <td><%= absenceuser.number %></td>
+                    <td><%= absenceuser.name %></td>
+                  </tr>
+                <% end %>
+              <% end %>
             <% end %>
           </table>
         </div>
@@ -191,3 +195,6 @@
     </script>
     </tr>
   <% end %>
+</table>
+
+<%= link_to 'TOPページに戻る', home_top_path %>
