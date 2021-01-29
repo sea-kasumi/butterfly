@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :日にち %>
-    <%= form.date_select :day, id: :counsel_day %>
-  </div>
+  <div class="input-counsel">
+    <div class="field">
+      <%= form.label :日にち %>
+      <%= form.date_select :day, id: :counsel_day %>
+    </div>
 
-  <div class="field">
-    <%= form.label :開始時間 %>
-    <%= form.number_field :start_time, id: :counsel_start_time %>
-  </div>
+    <div class="field">
+      <%= form.label :開始時間 %>
+      <%= form.number_field :start_time, id: :counsel_start_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :終了時間 %>
-    <%= form.number_field :end_time, id: :counsel_end_time %>
-  </div>
+    <div class="field">
+      <%= form.label :終了時間 %>
+      <%= form.number_field :end_time, id: :counsel_end_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :先生 %>
-    <%= form.text_field :teacher, id: :counsel_teacher %>
-  </div>
+    <div class="field">
+      <%= form.label :先生 %>
+      <%= form.text_field :teacher, id: :counsel_teacher %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "OK" %>
+    <div class="actions">
+      <%= form.submit "OK" %>
+    </div>
   </div>
 <% end %>
